@@ -1,0 +1,57 @@
+# image data path
+data:
+    # total training imagery, here we call it 'data', or 'total training image' or 'total data'
+    # because we will split the total data(training_imagery) into training set and validation set
+    root_data_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/training_imagery/'
+    root_test_imagery_dir: '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/test_imagery/'
+    
+    # png data for super-resolution
+    root_png_data_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/training_imagery_png/'
+    root_sr_data_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/training_imagery_sr/'
+
+    # csv files including annotation info
+    root_data_csv_path : '/mnt/disk1/zhibin/experiment_data/fine_grained/train.csv'
+    root_test_csv_path : '/mnt/disk1/zhibin/experiment_data/fine_grained/test.csv'
+
+    # cropped images which are named with 'tag_id' in evary csv row
+    root_cropped_data_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/training_imagery_cropped/'
+    root_cropped_sr_data_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/training_imagery_cropped_sr/'
+    root_cropped_test_imagery_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/test_imagery_cropped/'
+    root_cropped_sr_test_imagery_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_data/test_imagery_cropped_sr/'
+    
+    # number info
+    data_num : 11617
+    testing_image_num : 11879
+    divide_rate : 0.5
+
+lmdb:
+    root_lmdb_dir : '/mnt/disk1/zhibin/experiment_data/fine_grained/mafat_lmdb/'
+    training_lmdb_dir : 'training_lmdb/'
+    validation_lmdb_dir : 'validation_lmdb/'
+    testing_lmdb_dir : 'testing_lmdb/'
+    encoded_training_lmdb_dir : 'training_lmdb_encoded/'
+    encoded_validation_lmdb_dir : 'validation_lmdb_encoded/'
+    encoded_testing_lmdb_dir : 'testing_lmdb_encoded/'
+
+mapping:
+    # train.csv's info about the row's filed name and index mapping
+    field_index : { 'tag_id':0, 'image_id':1, 'p1_x':2, 'p1_y':3, 'p2_x':4, 'p2_y':5, 'p3_x':6, 'p3_y':7, 'p4_x':8,
+            'p4_y':9, 'general_class':10, 'sub_class':11, 'sunroof':12, 'luggage_carrier':13, 'open_cargo_area':14,
+            'enclosed_cab':15, 'spare_wheel':16, 'wrecked':17, 'flatbed':18, 'ladder':19, 'enclosed_box':20,
+            'soft_shell_box':21, 'harnessed_to_a_cart':22, 'ac_vents':23, 'color':24,}
+
+    # four sub-categorys (or so called 'sub-class') labelname-labelvalue mapping
+    label_value : {
+            'general_class' : { 'small vehicle' : 0, 'large vehicle' : 1, },
+            # 'general_class' : { 'small vehicle' : 15, 'large vehicle' : 16, },
+            'sub_class' : { 'sedan' : 0, 'hatchback' : 1, 'minivan' : 2, 'van' : 3, 'pickup' : 4,
+                'jeep' : 5, 'truck' : 6, 'light truck' : 7, 'crane truck' : 8, 'bus' : 9, 'prime mover' : 10,
+                'dedicated agricultural vehicle' : 11, 'cement mixer' : 12, 'tanker' : 13, 'minibus' : 14, },
+            # for those images without any feature, we set it 'empty_feature' labeled 12 (length of original mapping)
+            'feature' : { 'sunroof' : 0, 'luggage_carrier' : 1, 'open_cargo_area' : 2, 'enclosed_cab' : 3,
+                'spare_wheel' : 4, 'wrecked' : 5, 'flatbed' : 6, 'ladder' : 7, 'enclosed_box' : 8,
+                'soft_shell_box' : 9, 'harnessed_to_a_cart' : 10, 'ac_vents' : 11, 'empty_feature' : 12},
+            'color' : { 'yellow' : 0, 'red' : 1, 'blue' : 2, 'black' : 3, 'silver/grey' : 4, 'white' : 5,
+                'green' : 6, 'other' : 7, },}
+
+    task_names : ['general_class', 'sub_class', 'feature', 'color']
