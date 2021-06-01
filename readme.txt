@@ -1,10 +1,15 @@
-#######################################################################################
-#                                                                                     #
-#     Here is for personal code collection for the future development convenience     #
-#                                                                                     #
-#######################################################################################
+##
+##                                                                                     
+##    Author:       Fenglin.wx (wangxiao)
+##    Description:  These files are mainly scipt snippets for program development, of course, very
+##                  personally.                                                                     
+##    Date:         2021/06/01 updated
+##
 
 The main collection kinds are as follows:
-1. python code
-2. c++ code
-3. config code
+1. python 
+2. c++ 
+3. bash
+4. clang
+5. git
+
